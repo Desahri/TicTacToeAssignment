@@ -4,9 +4,9 @@ var url = require('url')
 
 //To be filled in
 var HOST = "localhost";
-var USER = "username";
-var PASS = "password";
-var DB = "dbname";
+var USER = "root";
+var PASS = "";
+var DB = "tttdb";
 
 /*
  * creates a server at port 3001 to listen to possible SQL insertion requests

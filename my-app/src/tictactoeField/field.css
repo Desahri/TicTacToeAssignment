@@ -29,3 +29,9 @@
 
     content: "Winner: O";
 }
+
+.winnerTied:after {
+    color: #f0f;
+
+    content: "Tied";
+}

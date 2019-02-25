@@ -77,7 +77,17 @@ class Field extends React.Component {
         if (grids[4] != null &&  ((grids[0] == grids[4] && grids[0] == grids[8]) || (grids[2] == grids[4] && grids[2] == grids[6])) ) {
             return grids[4];
         }
-        return null;
+
+        //check if not done
+        var done = true;
+        grids.forEach(function(grid) {
+            if (grid == null) {
+                done = false;
+            }
+        });
+        
+
+        return (done ? 'Tied' : null);
     }
 
     render() {
