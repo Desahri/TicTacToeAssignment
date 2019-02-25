@@ -4,6 +4,7 @@ A webapp that allows two people to play tictactoe locally and saves the game in 
 # Prerequisites
 - Node.js installed
 - Yarn installed
+- MySQL server installed
 
 # Installation guides
 
@@ -19,7 +20,13 @@ A webapp that allows two people to play tictactoe locally and saves the game in 
 3. Run the installer
 4. Follow the prompt
 
+## MySQL
+ToDo
+
 # Startup 
+To open up the web application, 2 steps need to be taken:
+1. Navigate to src/dbSender, open the CMD and do "node sendDBServer". This starts up the server to send data to your MySQL DataBase
+2. Navigate back to my-app, open the CMD and do "yarn start". the application will now run
 
 # Other tools used
 - React: for creating the UI

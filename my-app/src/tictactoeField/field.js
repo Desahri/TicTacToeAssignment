@@ -2,6 +2,8 @@ import React from 'react';
 
 import Grid from './grid';
 
+import sendData from '../dbSender/sendData'
+
 import'./field.css';
 
 class Field extends React.Component {
@@ -83,6 +85,7 @@ class Field extends React.Component {
 
         if (this.calcWinner() != null) {
             status = " winner" + this.calcWinner();
+            sendData(history);
         }
 
         return(
