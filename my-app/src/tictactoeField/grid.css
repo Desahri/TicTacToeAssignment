@@ -1,13 +1,24 @@
 .grid {
     background: rgb(223, 223, 223);
     border: 2px solid #000;
+
     font-size: 60px;
     font-weight: bold;
+
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
+    
     text-align: center;
 
     width: 100px;
     height: 100px;
+}
+
+.gridO {
+    color: #f00
+}
+
+.gridX {
+    color: #00f
 }

@@ -1,3 +1,17 @@
 .field {
     text-align: center;
 }
+
+.turnX:after {
+    font-size: 50px;
+    color: #00f;
+
+    content: "X";
+}
+
+.turnO:after {
+    font-size: 50px;
+    color: #f00;
+
+    content: "O";
+}
