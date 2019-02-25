@@ -40,6 +40,11 @@ class Field extends React.Component {
 
         //set the value of the grid depending on who's turn it was
         newGrids[gridNr] = this.state.xTurn ? 'X' : 'O';
+
+        //add fieldState to the history
+        let turn = Object.keys(history).length;
+        history[turn] = newGrids;
+
         this.setState({
             gridValues: newGrids,
             xTurn: !this.state.xTurn,
@@ -76,7 +81,7 @@ class Field extends React.Component {
     render() {
         var status = this.state.xTurn ? " turnX" : " turnO";
 
-        if (this.calcWinner != null) {
+        if (this.calcWinner() != null) {
             status = " winner" + this.calcWinner();
         }
 
@@ -102,4 +107,7 @@ class Field extends React.Component {
         );
     }
 }
+
+var history = {};
+
 export default Field;
