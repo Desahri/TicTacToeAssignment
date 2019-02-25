@@ -8,8 +8,9 @@ class Field extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            gridValues: Array(9).fill('.'),
+            gridValues: Array(9).fill(null),
             xTurn: true,
+            winner: null,
         }
     }
 
@@ -17,7 +18,11 @@ class Field extends React.Component {
      * returns the grid with the relevant value ('.', 'X' or 'O')
      */
     getGrid(gridNr) {
-        return <Grid value={this.state.gridValues[gridNr]} onClick={() => this.gridClick(gridNr)} />
+        var gridVal = this.state.gridValues[gridNr];
+        if (gridVal == null) {
+            gridVal = '.';
+        }
+        return <Grid value={gridVal} onClick={() => this.gridClick(gridNr)} />
     }
 
     /*
@@ -28,9 +33,10 @@ class Field extends React.Component {
         var newGrids = this.state.gridValues.slice();
 
         //Don't do anything if the grid is already used
-        if(newGrids[gridNr] != '.') {
+        if(newGrids[gridNr] != null || this.calcWinner() != null) {
             return;
         }
+
 
         //set the value of the grid depending on who's turn it was
         newGrids[gridNr] = this.state.xTurn ? 'X' : 'O';
@@ -40,8 +46,39 @@ class Field extends React.Component {
         });
     }
 
+    /*
+     * calculates if someone has won
+     */
+    calcWinner() {
+        let grids = this.state.gridValues;
+        
+        //check horizontal
+        for(let i = 0; i < 9; i+=3) {
+            if (grids[i] != null && grids[i] == grids[i+1] && grids[i] == grids[i+2]) {
+                return grids[i];
+            }
+        }
+        
+        //check vertical
+        for(let i = 0; i < 3; i++) {
+            if (grids[i] != null && grids[i] == grids[i+3] && grids[i] == grids[i+6]) {
+                return grids[i];
+            }
+        }
+
+        //check diagonal
+        if (grids[4] != null &&  ((grids[0] == grids[4] && grids[0] == grids[8]) || (grids[2] == grids[4] && grids[2] == grids[6])) ) {
+            return grids[4];
+        }
+        return null;
+    }
+
     render() {
-        var turn = this.state.xTurn ? " turnX" : " turnO";
+        var status = this.state.xTurn ? " turnX" : " turnO";
+
+        if (this.calcWinner != null) {
+            status = " winner" + this.calcWinner();
+        }
 
         return(
             <div className='field'>
@@ -60,7 +97,7 @@ class Field extends React.Component {
                     {this.getGrid(7)}
                     {this.getGrid(8)}
                 </div>
-                <div className={"fieldRow" + turn} />
+                <div className={"fieldRow statusDiv" + status} />
             </div>
         );
     }

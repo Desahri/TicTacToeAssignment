@@ -2,16 +2,30 @@
     text-align: center;
 }
 
-.turnX:after {
+.statusDiv {
     font-size: 50px;
+}
+
+.turnX:after {
     color: #00f;
 
     content: "X";
 }
 
 .turnO:after {
-    font-size: 50px;
     color: #f00;
 
     content: "O";
+}
+
+.winnerX:after {
+    color: #00f;
+
+    content: "Winner: X";
+}
+
+.winnerO:after {
+    color: #f00;
+
+    content: "Winner: O";
 }

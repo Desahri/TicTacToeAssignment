@@ -8,11 +8,13 @@ function Grid(props) {
     let col = "";
     switch(props.value) {
         case 'X':
-        col = " gridX";
-        break;
+            col = " gridX";
+            break;
         case 'O':
-        col = " gridO";
-        break;
+            col = " gridO";
+            break;
+        default:
+            break;
     }
     return(
         <button className={"grid" + col} onClick={props.onClick}>
