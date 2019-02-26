@@ -48,10 +48,13 @@ To send data to the SQL server, a node.js server was used, mainly because of its
 The UI consists of two main components: Field and Grid
 ## Field
 The Field keeps track of the state. The state contains whose turn it is, the current values of the grid (X, O or NULL) and the field history. When a specific grid is clicked, the state of this field will change. As a result, the UI will update automatically.
-Furthermore, the Field generates the whole field when a free grid is clicked. The field consists of 3 row with 3 grids and a row to display the status (whose turn it and whether there is a winner). Note that the onclick listener of the grid is defined in field, since a click should change the field status.
+Furthermore, the Field generates the whole field when a free grid is clicked. The field consists of 3 row with 3 grids and a row to display the status (whose turn it and whether there is a winner). Note that the onclick listener of the grid is defined in Field, since a click should change the field status.
 
 ## Grid
 The Grid is a button with the text received from its props. With the use of css classes, the X and O have a different colors.
+
+# Testing
+Due to the small size of the project and the unfamiliarity with unit testing in js of the developer (Only used Jasmine once), unit tests have been omitted and only an Acceptance Test has been performed by the developer.
 
 # Disclaimer
 Due to the fact that the turorial for React.js is about making a tictactoe game as well, certain components may be inspired from this tutorial. In no way has any code been directly copy-pasted from this tutorial.
