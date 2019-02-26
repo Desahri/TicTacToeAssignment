@@ -12,7 +12,7 @@ class Field extends React.Component {
         this.state = {
             gridValues: Array(9).fill(null),
             xTurn: true,
-            winner: null,
+            history: {},
         }
     }
 
@@ -44,12 +44,14 @@ class Field extends React.Component {
         newGrids[gridNr] = this.state.xTurn ? 'X' : 'O';
 
         //add fieldState to the history
-        let turn = Object.keys(history).length;
-        history[turn] = newGrids;
+        let newHistory = this.state.history;
+        let turn = Object.keys(newHistory).length;
+        newHistory[turn] = newGrids;
 
         this.setState({
             gridValues: newGrids,
             xTurn: !this.state.xTurn,
+            history: newHistory,
         });
     }
 
@@ -95,7 +97,7 @@ class Field extends React.Component {
 
         if (this.calcWinner() != null) {
             status = " winner" + this.calcWinner();
-            sendData(history);
+            sendData(this.state.history);
         }
 
         return(
@@ -120,7 +122,5 @@ class Field extends React.Component {
         );
     }
 }
-
-var history = {};
 
 export default Field;
